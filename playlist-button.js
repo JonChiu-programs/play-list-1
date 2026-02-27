@@ -20,12 +20,6 @@ export class PlayList1 extends DDDSuper(I18NMixin(LitElement)) {
 
   constructor() {
     super();
-    this.registerLocalization({
-      context: this,
-      localesPath:
-        new URL("./locales/playlist-button.ar.json", import.meta.url).href +
-        "/../",
-    });
   }
 
   // Lit reactive properties
@@ -67,13 +61,6 @@ export class PlayList1 extends DDDSuper(I18NMixin(LitElement)) {
 <div class="buttonWrapper">
   <button class="button">${this.title}</button>
 </div>`;
-  }
-  /**
-   * haxProperties integration via file reference
-   */
-  static get haxProperties() {
-    return new URL(`./lib/${this.tag}.haxProperties.json`, import.meta.url)
-      .href;
   }
 }
 

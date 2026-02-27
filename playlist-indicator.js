@@ -28,12 +28,6 @@ export class PlayList1 extends DDDSuper(I18NMixin(LitElement)) {
       ...this.t,
       title: "Title",
     };
-    this.registerLocalization({
-      context: this,
-      localesPath:
-        new URL("./locales/playlist-indicator.ar.json", import.meta.url).href +
-        "/../",
-    });
   }
 
   // Lit reactive properties
@@ -83,13 +77,6 @@ export class PlayList1 extends DDDSuper(I18NMixin(LitElement)) {
 </div>`;
   }
 
-  /**
-   * haxProperties integration via file reference
-   */
-  static get haxProperties() {
-    return new URL(`./lib/${this.tag}.haxProperties.json`, import.meta.url)
-      .href;
-  }
 }
 
 globalThis.customElements.define(PlayList1.tag, PlayList1);
