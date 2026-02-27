@@ -7,29 +7,23 @@ import { DDDSuper } from "@haxtheweb/d-d-d/d-d-d.js";
 import { I18NMixin } from "@haxtheweb/i18n-manager/lib/I18NMixin.js";
 
 /**
- * `play-list-1`
+ * `playlist-button`
  * 
  * @demo index.html
- * @element play-list-1
+ * @element playlist-button
  */
 export class PlayList1 extends DDDSuper(I18NMixin(LitElement)) {
 
   static get tag() {
-    return "play-list-1";
+    return "playlist-button";
   }
 
   constructor() {
     super();
-    this.title = "";
-    this.t = this.t || {};
-    this.t = {
-      ...this.t,
-      title: "",
-    };
     this.registerLocalization({
       context: this,
       localesPath:
-        new URL("./locales/play-list-1.ar.json", import.meta.url).href +
+        new URL("./locales/playlist-button.ar.json", import.meta.url).href +
         "/../",
     });
   }
@@ -46,35 +40,23 @@ export class PlayList1 extends DDDSuper(I18NMixin(LitElement)) {
   static get styles() {
     return [super.styles,
     css`
-      :host {
+
+      .buttonWrapper {
         display: inline-block;
-        height: 800px;
-        width: 1000px;
-        color: var(--ddd-theme-primary);
-        background-color: var(--ddd-theme-accent);
-        font-family: var(--ddd-font-navigation);
-      }
-      .wrapper {
         margin: var(--ddd-spacing-2);
         padding: var(--ddd-spacing-4);
       }
-      h3 span {
+
+      .button{
+        display: inline-block;
+        transform: translateY(-380px);
+        height: 100px;
+        width: 100px;
+        font-size: 65px;
         text-align: center;
-        font-size: 100px;
-      }
-
-      .container{
-        width: 950px;
-        height: 600px;
-        overflow-wrap: break-word;
-        hyphens: auto;
-        word-break: break-all;
-        overflow: auto;
-        white-space: nowrap;
-      }
-
-      .text {
-        font-size: 45px;
+        padding-bottom: 10px;
+        background-color: blue;
+        border-radius: 20px;
       }
     `];
   }
@@ -82,12 +64,10 @@ export class PlayList1 extends DDDSuper(I18NMixin(LitElement)) {
   // Lit render the HTML
   render() {
     return html`
-<div class="wrapper">
-  <h3><span>${this.title}:</span></h3>
-  <div class = "container"><slot class = "text"></slot></div>
+<div class="buttonWrapper">
+  <button class="button">${this.title}</button>
 </div>`;
   }
-
   /**
    * haxProperties integration via file reference
    */

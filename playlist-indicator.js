@@ -7,29 +7,31 @@ import { DDDSuper } from "@haxtheweb/d-d-d/d-d-d.js";
 import { I18NMixin } from "@haxtheweb/i18n-manager/lib/I18NMixin.js";
 
 /**
- * `play-list-1`
+ * `playlist-indicator`
  * 
  * @demo index.html
- * @element play-list-1
+ * @element playlist-indicator
  */
 export class PlayList1 extends DDDSuper(I18NMixin(LitElement)) {
 
   static get tag() {
-    return "play-list-1";
+    return "playlist-indicator";
   }
 
   constructor() {
     super();
+    this.count = "0"
+    this.max = "0"
     this.title = "";
     this.t = this.t || {};
     this.t = {
       ...this.t,
-      title: "",
+      title: "Title",
     };
     this.registerLocalization({
       context: this,
       localesPath:
-        new URL("./locales/play-list-1.ar.json", import.meta.url).href +
+        new URL("./locales/playlist-indicator.ar.json", import.meta.url).href +
         "/../",
     });
   }
@@ -39,6 +41,8 @@ export class PlayList1 extends DDDSuper(I18NMixin(LitElement)) {
     return {
       ...super.properties,
       title: { type: String },
+      count: {type : Number, reflect: true},
+      max: {type : Number}
     };
   }
 
@@ -47,34 +51,26 @@ export class PlayList1 extends DDDSuper(I18NMixin(LitElement)) {
     return [super.styles,
     css`
       :host {
-        display: inline-block;
-        height: 800px;
-        width: 1000px;
+        height: 250px;
+        width: 500px;
+        transform: translateX(400px);
+        display: block;
         color: var(--ddd-theme-primary);
-        background-color: var(--ddd-theme-accent);
+        background-color: var(--ddd-theme-default-beaverBlue);
         font-family: var(--ddd-font-navigation);
       }
-      .wrapper {
+
+
+      .indicatorWrapper {
         margin: var(--ddd-spacing-2);
         padding: var(--ddd-spacing-4);
       }
-      h3 span {
+
+      .counter{
         text-align: center;
-        font-size: 100px;
-      }
-
-      .container{
-        width: 950px;
-        height: 600px;
-        overflow-wrap: break-word;
-        hyphens: auto;
-        word-break: break-all;
-        overflow: auto;
-        white-space: nowrap;
-      }
-
-      .text {
-        font-size: 45px;
+        display: flex;
+        padding-left: 65px;
+        font-size: 150px;
       }
     `];
   }
@@ -82,9 +78,8 @@ export class PlayList1 extends DDDSuper(I18NMixin(LitElement)) {
   // Lit render the HTML
   render() {
     return html`
-<div class="wrapper">
-  <h3><span>${this.title}:</span></h3>
-  <div class = "container"><slot class = "text"></slot></div>
+<div class="indicatorWrapper">
+    <h3 class = "counter">${this.count} / ${this.max}</h3>
 </div>`;
   }
 
