@@ -28,11 +28,10 @@
     div.text{
       padding: 20px;
     }
-
-    div.counter{
-      padding: 20px;
-      font-size: 100px;
-    }
+    
+    .divider{
+        display: block;
+      }
     
   </style>
   <title>play-list-1</title>
@@ -51,7 +50,11 @@
 
     <playlist-button title = ">"></playlist-button>
 
-    <playlist-indicator count = "1" max = "2"></playlist-indicator>
+    <div class = "divider"></div>
+
+    <playlist-indicator></playlist-indicator>
+    <playlist-indicator></playlist-indicator>
+    <playlist-indicator></playlist-indicator>
   </div>
   <script type="module" src="./play-list-1.js"></script>
   <script type = "module" src="./playlist-button.js"></script>
